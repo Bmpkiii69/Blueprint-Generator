@@ -1,7 +1,3 @@
-Tentu, berikut adalah petunjuk penggunaan (user guide) untuk aplikasi "Blueprint Generator Pro" yang telah kita kembangkan:
-
----
-
 **User Guide: Blueprint Generator Pro (Enhanced Context)**
 
 **Daftar Isi:**
