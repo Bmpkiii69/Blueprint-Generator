@@ -1,4 +1,4 @@
-# Blueprint Generator - Enhanced Context & Features (Layout + Sub-Modules)
+# Blueprint Generator (HKS)
 # Left: Tabs (Setup, Modules, Preview/Gen) | Right: Options (Design, AI, Gen)
 
 import tkinter as tk
