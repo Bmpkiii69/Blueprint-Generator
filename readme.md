@@ -189,4 +189,4 @@ File-file yang dihasilkan dirancang untuk digunakan oleh AI coding assistant And
 
 ---
 
-Semoga petunjuk ini membantu Anda!
+Semoga petunjuk ini dapat membantu!
