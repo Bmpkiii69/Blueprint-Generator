@@ -110,19 +110,28 @@ Panel di sebelah kanan berisi pengaturan tambahan:
         *   `Generate .gitignore`: Menghasilkan file .gitignore standar.
         *   `Initialize Git Repository`: Menjalankan `git init` di folder output setelah generasi selesai (membutuhkan Git terinstal).
 
-**5.3 Mengelola Tab "2. Modules"**
+**5.3 Mengelola Tab "2. Modules" (Dengan Sub-Modul)**
 
-Tab ini opsional tetapi sangat disarankan untuk memecah aplikasi menjadi bagian-bagian logis.
+Tab ini memungkinkan Anda mendefinisikan struktur hierarkis modul dan sub-modul aplikasi Anda.
+Menambah Modul/Sub-Modul:
 
-1.  **Add Module:**
-    *   Masukkan **Nama Modul** yang deskriptif (Misal: "Authentication", "Product Catalog", "Order Processing").
-    *   Masukkan **Deskripsi/Tujuan** modul di area teks.
-    *   Klik tombol **"+ Add Module"**. Modul akan ditambahkan ke daftar di bawah.
-2.  **Remove Module:**
-    *   Pilih satu atau lebih modul dari daftar "Added Modules".
-    *   Klik tombol **"- Remove Selected Module"**.
+1.	**Parent Module:**
+	*	Pilih modul induk dari combobox. Pilih "(Top Level)" untuk membuat modul di tingkat paling atas. Daftar ini akan menampilkan nama modul beserta path induknya (jika ada) untuk kejelasan (misal: "Auth :: Login").
+	*	Module Name: Masukkan nama untuk modul baru ini (misalnya, "Login", "Registration", "Processing"). Nama ini harus unik di bawah induk yang sama.
+	*	Description: Masukkan deskripsi/tujuan untuk modul baru ini.
+	*	Klik tombol "+ Add Module". Modul baru akan ditambahkan ke dalam struktur pohon (Treeview) di bawah induk yang dipilih. Combobox "Parent Module" juga akan diperbarui.
+	*	Melihat Struktur:
+		*	Area "Module Hierarchy" menggunakan Treeview untuk menampilkan modul.
+		*	Klik tanda + (jika ada) di sebelah nama modul untuk membuka dan melihat sub-modulnya.
+		*	Kolom menampilkan nama modul dan deskripsinya. Anda mungkin perlu menggunakan scrollbar horizontal untuk melihat deskripsi yang panjang.
+2.	**Menghapus Modul:**
+	*	Pilih modul yang ingin Anda hapus dengan mengkliknya di dalam Treeview.
+	*	Klik tombol "- Remove Selected Module (and children)".
+	*	Anda akan diminta konfirmasi. Jika dikonfirmasi, modul yang dipilih beserta semua sub-modul di bawahnya akan dihapus dari daftar dan Treeview. Combobox "Parent Module" juga akan diperbarui.
+3.	**Struktur dalam Output:**
+	*	Informasi hierarki modul ini akan diformat secara otomatis dalam file architecture.md dan project_plan.md (dan README.md jika digenerate) menggunakan indentasi atau daftar bersarang untuk menunjukkan hubungan parent-child, memberikan konteks struktur yang lebih baik kepada AI.
 
-Informasi modul ini akan digabungkan dengan "Key Features" saat membuat prompt untuk AI.
+**Informasi modul ini akan digabungkan dengan "Key Features" saat membuat prompt untuk AI.**
 
 **5.4 Menggunakan Tab "3. Preview & Generate"**
 
