@@ -120,7 +120,7 @@ class BlueprintGeneratorApp:
     def __init__(self, root_window):
         # ... (Inisialisasi variabel state lain sama) ...
         self.root = root_window
-        self.root.title("Blueprint Generator 1.5")
+        self.root.title("Cursor Blueprint Generator 1.5")
         self.root.geometry("1250x850")
         self.modul_list = []
         self._next_module_id = 1
