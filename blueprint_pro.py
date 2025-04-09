@@ -307,18 +307,70 @@ class BlueprintGeneratorApp:
         self.entry_modul_nama.delete(0, tk.END); self.entry_modul_deskripsi.delete("1.0", tk.END); self._update_parent_module_combo(); self.update_status(f"Module '{nama}' added.");
         if p_tree_iid: self.module_tree.item(p_tree_iid, open=True)
     def hapus_modul(self):
-        sel=self.module_tree.selection();
-        if not sel: messagebox.showwarning("No Selection", "Select module to remove."); return
-        sel_iid=sel[0]; mod_id=self.treeview_iid_to_module_id.get(sel_iid)
-        if mod_id is None: messagebox.showerror("Error", "Internal ID not found."); return; mod=self._get_module_by_id(mod_id)
-        if not mod: messagebox.showerror("Error", "Module data not found."); return
-        desc_ids=self._get_all_descendant_ids(mod_id); msg=f"Remove '{mod['nama']}'?" + (f"\nAlso {len(desc_ids)} sub-module(s)." if desc_ids else "")
-        if not messagebox.askyesno("Confirm", msg): return
-        ids_del=[mod_id]+desc_ids; tree_iids_del=[str(mid) for mid in ids_del]
-        for item_iid in tree_iids_del:
-            if self.module_tree.exists(item_iid): self.module_tree.delete(item_iid)
-            if item_iid in self.treeview_iid_to_module_id: del self.treeview_iid_to_module_id[item_iid]
-        self.modul_list=[m for m in self.modul_list if m['id'] not in ids_del]; self._update_parent_module_combo(); self.update_status(f"Module '{mod['nama']}' removed.")
+        """Removes the selected module and all its descendants."""
+        selected_iids = self.module_tree.selection()
+        if not selected_iids:
+            messagebox.showwarning("No Selection", "Select a module to remove."); return
+
+        selected_iid = selected_iids[0] # Handle single selection
+        module_id_to_remove = self.treeview_iid_to_module_id.get(selected_iid)
+
+        if module_id_to_remove is None:
+             # This might happen if mapping is somehow inconsistent
+             messagebox.showerror("Internal Error", "Could not find internal ID for the selected tree item. Please reload the project.")
+             print(f"ERROR: Cannot find module ID for Treeview iid '{selected_iid}' in mapping.")
+             return
+
+        # --- FIX: Get module data AFTER checking module_id_to_remove ---
+        module_to_remove = self._get_module_by_id(module_id_to_remove)
+        # --- FIX: Check if module_to_remove is None BEFORE using it ---
+        if not module_to_remove:
+             messagebox.showerror("Data Error", f"Could not find data for module ID {module_id_to_remove}. The project data might be inconsistent.")
+             print(f"ERROR: Module data not found for existing ID {module_id_to_remove}.")
+             # Optionally, try to remove the inconsistent item from tree anyway?
+             # if self.module_tree.exists(selected_iid):
+             #     self.module_tree.delete(selected_iid)
+             # if selected_iid in self.treeview_iid_to_module_id:
+             #     del self.treeview_iid_to_module_id[selected_iid]
+             return
+
+        # Now it's safe to use module_to_remove['nama']
+        confirm_msg = f"Remove '{module_to_remove['nama']}'?"
+        descendant_ids = self._get_all_descendant_ids(module_id_to_remove)
+        if descendant_ids:
+            confirm_msg += f"\nThis will also remove {len(descendant_ids)} sub-module(s)."
+
+        if not messagebox.askyesno("Confirm Removal", confirm_msg):
+            return
+
+        # --- Perform Deletion ---
+        ids_to_delete = [module_id_to_remove] + descendant_ids
+
+        # 1. Remove from Treeview (using module IDs to find correct iids)
+        # FIX: Iterate through ids_to_delete and find corresponding iid
+        iids_to_delete_in_tree = []
+        temp_mapping_copy = self.treeview_iid_to_module_id.copy() # Avoid modifying dict while iterating
+        for iid, mod_id in temp_mapping_copy.items():
+            if mod_id in ids_to_delete:
+                iids_to_delete_in_tree.append(iid)
+
+        for item_iid in iids_to_delete_in_tree:
+             if self.module_tree.exists(item_iid):
+                  try:
+                       self.module_tree.delete(item_iid)
+                  except tk.TclError as e:
+                      print(f"Warning: TclError deleting item {item_iid} from tree: {e}")
+             # Remove from mapping after deletion from tree
+             if item_iid in self.treeview_iid_to_module_id:
+                  del self.treeview_iid_to_module_id[item_iid]
+
+
+        # 2. Remove from self.modul_list
+        self.modul_list = [mod for mod in self.modul_list if mod['id'] not in ids_to_delete]
+
+        # 3. Update parent combo
+        self._update_parent_module_combo()
+        self.update_status(f"Module '{module_to_remove['nama']}' and descendants removed.")
     def _format_modules_hierarchical(self, parent_id=None, indent=0) -> str: md = ""; children = sorted(self._get_module_children_ids(parent_id), key=lambda x: self._get_module_by_id(x)['nama']); indent_s = "    " * indent; [(mod := self._get_module_by_id(mod_id)) and (md := md + f"{indent_s}- **{mod['nama']}:** {mod['deskripsi']}\n" + self._format_modules_hierarchical(mod_id, indent + 1)) for mod_id in children]; return md
     def _on_app_type_or_language_change(self, event=None): self._update_language_list(); self._update_dynamic_combos()
     def _update_language_list(self):
