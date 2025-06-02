@@ -1,4 +1,4 @@
-**User Guide: Blueprint Generator Pro (Enhanced Context)**
+**User Guide: Blueprint Generator (Enhanced Context)**
 
 **Daftar Isi:**
 
@@ -20,7 +20,7 @@
 
 **1. Pendahuluan**
 
-Blueprint Generator Pro adalah alat bantu untuk memulai proyek perangkat lunak baru. Aplikasi ini membantu Anda mendefinisikan detail proyek, konteks bisnis, pilihan teknologi, dan batasan desain secara terstruktur. Kemudian, menggunakan model AI (OpenAI GPT atau Google Gemini), aplikasi ini menghasilkan file-file blueprint awal:
+Blueprint Generator adalah alat bantu untuk memulai proyek perangkat lunak baru. Aplikasi ini membantu Anda mendefinisikan detail proyek, konteks bisnis, pilihan teknologi, dan batasan desain secara terstruktur. Kemudian, menggunakan model AI (OpenAI GPT atau Google Gemini), aplikasi ini menghasilkan file-file blueprint awal:
 
 *   `.cursorrules`: Aturan dan prompt sistem untuk AI coding assistant (seperti di editor Cursor).
 *   `architecture.md`: Dokumentasi arsitektur perangkat lunak.
