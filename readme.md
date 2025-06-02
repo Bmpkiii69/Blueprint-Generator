@@ -1,4 +1,4 @@
-# Blueprint Generator Pro
+# Blueprint Generator
 
 Aplikasi GUI untuk menghasilkan dokumentasi proyek dan file `.cursorrules` yang membantu AI di Cursor IDE tetap fokus dan konsisten dengan tujuan development Anda.
 
@@ -114,4 +114,4 @@ Untuk penjelasan detail tentang tujuan dan fitur aplikasi, baca [ABOUT.md](ABOUT
 
 ---
 
-**Blueprint Generator Pro** - Membuat AI Cursor IDE Anda lebih cerdas dan fokus 
+**Blueprint Generator** - Membuat AI Cursor IDE Anda lebih cerdas dan fokus 
