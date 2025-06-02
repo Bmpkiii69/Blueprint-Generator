@@ -58,17 +58,17 @@ pip install pyinstaller
 
 ```bash
 # Single file executable (direkomendasikan)
-pyinstaller --name BlueprintGeneratorPro --onefile --windowed blueprint_generator.py
+pyinstaller --name BlueprintGenerator --onefile --windowed blueprint_generator.py
 
 # Atau dengan icon (jika ada file .ico)
-pyinstaller --name BlueprintGeneratorPro --onefile --windowed --icon=icon.ico blueprint_generator.py
+pyinstaller --name BlueprintGenerator --onefile --windowed --icon=icon.ico blueprint_generator.py
 ```
 
 ### 3. Hasil Executable
 
 File `.exe` akan tersedia di folder:
 ```
-dist/BlueprintGeneratorPro.exe
+dist/BlueprintGenerator.exe
 ```
 
 File ini sudah standalone dan bisa dijalankan tanpa Python terinstall.
