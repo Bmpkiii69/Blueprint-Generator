@@ -36,7 +36,7 @@ pip install -r requirements.txt
 ### 2. Jalankan Aplikasi
 
 ```bash
-python bpg.py
+python blueprint_generator.py
 ```
 
 ### 3. Setup API Keys
@@ -58,10 +58,10 @@ pip install pyinstaller
 
 ```bash
 # Single file executable (direkomendasikan)
-pyinstaller --name BlueprintGeneratorPro --onefile --windowed bpg.py
+pyinstaller --name BlueprintGeneratorPro --onefile --windowed blueprint_generator.py
 
 # Atau dengan icon (jika ada file .ico)
-pyinstaller --name BlueprintGeneratorPro --onefile --windowed --icon=icon.ico bpg.py
+pyinstaller --name BlueprintGeneratorPro --onefile --windowed --icon=icon.ico blueprint_generator.py
 ```
 
 ### 3. Hasil Executable
