@@ -1,29 +1,29 @@
 # Blueprint Generator
 
-Aplikasi GUI untuk menghasilkan dokumentasi proyek dan file `.cursorrules` yang membantu AI di Cursor IDE tetap fokus dan konsisten dengan tujuan development Anda.
+A GUI application to generate project documentation and `.cursorrules` files that help the AI in Cursor IDE stay focused and consistent with your development goals.
 
-## 🎯 Apa yang Dihasilkan
+## 🎯 What It Generates
 
-- **`.cursorrules`** - File konfigurasi AI untuk Cursor IDE
-- **`architecture.md`** - Dokumentasi arsitektur aplikasi
-- **`project_plan.md`** - Rencana proyek dengan task checklist
-- **`README.md`** - (opsional) README untuk proyek
-- **`.gitignore`** - (opsional) File gitignore
-- **Git repository** - (opsional) Inisialisasi git repo
+- **`.cursorrules`** - AI configuration file for Cursor IDE
+- **`architecture.md`** - Application architecture documentation
+- **`project_plan.md`** - Project plan with task checklist
+- **`README.md`** - (optional) README for the project
+- **`.gitignore`** - (optional) Gitignore file
+- **Git repository** - (optional) Initialize git repo
 
-## 🚀 Cara Menjalankan dari Python
+## 🚀 How to Run from Python
 
-### 1. Persiapan Environment
+### 1. Environment Setup
 
 ```bash
-# Clone atau download file
-# Masuk ke folder proyek
+# Clone or download files
+# Go to the project folder
 cd blueprint_generator
 
-# Buat virtual environment
+# Create a virtual environment
 python -m venv venv
 
-# Aktifkan virtual environment
+# Activate the virtual environment
 # Windows PowerShell:
 .\venv\Scripts\Activate.ps1
 # Windows CMD:
@@ -33,7 +33,7 @@ python -m venv venv
 pip install -r requirements.txt
 ```
 
-### 2. Jalankan Aplikasi
+### 2. Run the Application
 
 ```bash
 python blueprint_generator.py
@@ -41,77 +41,77 @@ python blueprint_generator.py
 
 ### 3. Setup API Keys
 
-Sebelum menggunakan, pastikan Anda memiliki API key dari:
-- **OpenAI** (untuk GPT models) - https://platform.openai.com/api-keys
-- **Google Gemini** (untuk Gemini models) - https://makersuite.google.com/app/apikey
+Before using, ensure you have API keys from:
+- **OpenAI** (for GPT models) - https://platform.openai.com/api-keys
+- **Google Gemini** (for Gemini models) - https://makersuite.google.com/app/apikey
 
-## 📦 Membuat File Executable (.exe) di Windows
+## 📦 Creating an Executable File (.exe) on Windows
 
-### 1. Install PyInstaller (jika belum ada)
+### 1. Install PyInstaller (if not already installed)
 
 ```bash
-# Pastikan venv aktif
+# Make sure venv is active
 pip install pyinstaller
 ```
 
 ### 2. Generate Executable
 
 ```bash
-# Single file executable (direkomendasikan)
+# Single file executable (recommended)
 pyinstaller --name BlueprintGenerator --onefile --windowed blueprint_generator.py
 
-# Atau dengan icon (jika ada file .ico)
+# Or with an icon (if you have an .ico file)
 pyinstaller --name BlueprintGenerator --onefile --windowed --icon=icon.ico blueprint_generator.py
 ```
 
-### 3. Hasil Executable
+### 3. Executable Result
 
-File `.exe` akan tersedia di folder:
+The `.exe` file will be available in the folder:
 ```
 dist/BlueprintGenerator.exe
 ```
 
-File ini sudah standalone dan bisa dijalankan tanpa Python terinstall.
+This file is standalone and can be run without Python installed.
 
 ## 🛠️ Requirements
 
 - **Python 3.7+**
-- **tkinter** (biasanya sudah termasuk dalam Python)
-- **openai** (untuk OpenAI GPT models)
-- **google-generativeai** (untuk Google Gemini models)
+- **tkinter** (usually included with Python)
+- **openai** (for OpenAI GPT models)
+- **google-generativeai** (for Google Gemini models)
 
-## 📋 Penggunaan Singkat
+## 📋 Quick Usage
 
-1. **Isi informasi proyek** di tab "Project Setup"
-2. **Tambah modul aplikasi** di tab "Modules" 
-3. **Masukkan API key** AI provider pilihan Anda
-4. **Generate blueprint** di tab "Preview & Generate"
-5. **Copy file `.cursorrules`** ke root folder proyek Cursor IDE
+1. **Fill in project information** in the "Project Setup" tab
+2. **Add application modules** in the "Modules" tab
+3. **Enter the API key** of your chosen AI provider
+4. **Generate blueprint** in the "Preview & Generate" tab
+5. **Copy the `.cursorrules` file** to the root folder of your Cursor IDE project
 
 ## 🔧 Troubleshooting
 
-### Error: AI library tidak ditemukan
+### Error: AI library not found
 ```bash
 pip install openai google-generativeai
 ```
 
-### Error: PyInstaller tidak ditemukan
+### Error: PyInstaller not found
 ```bash
 pip install pyinstaller
 ```
 
-### Error: API key tidak valid
-- Pastikan API key benar dan masih aktif
-- Cek quota/billing di dashboard provider AI
+### Error: Invalid API key
+- Ensure the API key is correct and still active
+- Check quota/billing on the AI provider's dashboard
 
-### File .exe tidak jalan
-- Pastikan tidak ada antivirus yang memblokir
-- Coba jalankan dari Command Prompt untuk melihat error message
+### .exe file does not run
+- Ensure no antivirus is blocking it
+- Try running from Command Prompt to see the error message
 
-## 📖 Informasi Lebih Lanjut
+## 📖 More Information
 
-Untuk penjelasan detail tentang tujuan dan fitur aplikasi, baca [ABOUT.md](ABOUT.md)
+For a detailed explanation of the application's purpose and features, read [ABOUT.md](ABOUT.md)
 
 ---
 
-**Blueprint Generator** - Membuat AI Cursor IDE Anda lebih cerdas dan fokus 
+**Blueprint Generator** - Making Your Cursor IDE AI smarter and more focused 
